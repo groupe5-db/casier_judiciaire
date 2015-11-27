@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="casier.jnlp">
+  <information>
+    <title>casier</title>
+    <vendor>armel</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD:casier/dist/casier.jnlp
+    <jar href="casier.jar" size="89440" download="eager" />
+    <jar href="lib/PDFRenderer-0.9.1.jar" size="2140611" download="eager" />
+    <jar href="lib/antlr-2.7.7.jar" size="457986" download="eager" />
+    <jar href="lib/c3p0-0.9.2.1.jar" size="443580" download="eager" />
+    <jar href="lib/dom4j-1.6.1.jar" size="327662" download="eager" />
+    <jar href="lib/ehcache-core-2.4.3.jar" size="1076331" download="eager" />
+    <jar href="lib/hibernate-c3p0-4.2.6.Final.jar" size="43921" download="eager" />
+    <jar href="lib/hibernate-commons-annotations-4.0.2.Final.jar" size="89648" download="eager" />
+    <jar href="lib/hibernate-core-4.2.6.Final.jar" size="4892312" download="eager" />
+    <jar href="lib/hibernate-ehcache-4.2.6.Final.jar" size="144218" download="eager" />
+    <jar href="lib/hibernate-entitymanager-4.2.6.Final.jar" size="513480" download="eager" />
+    <jar href="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" size="121858" download="eager" />
+    <jar href="lib/itext-2.1.7.jar" size="1183060" download="eager" />
+    <jar href="lib/jBCrypt-0.4.jar" size="18608" download="eager" />
+    <jar href="lib/javassist-3.15.0-GA.jar" size="679691" download="eager" />
+    <jar href="lib/jboss-logging-3.1.0.GA.jar" size="66414" download="eager" />
+    <jar href="lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" size="28963" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="860446" download="eager" />
+    <jar href="lib/slf4j-api-1.6.1.jar" size="29179" download="eager" />
+    <jar href="lib/slf4j-simple-1.6.1.jar" size="9650" download="eager" />
+    <jar href="lib/validation-api-1.1.0.Final.jar" size="76323" download="eager" />
+=======
+    <jar href="casier.jar" size="53281" download="eager" />
+    <jar href="lib/antlr-2.7.7.jar" size="457992" download="eager" />
+    <jar href="lib/c3p0-0.9.2.1.jar" size="443587" download="eager" />
+    <jar href="lib/dom4j-1.6.1.jar" size="327661" download="eager" />
+    <jar href="lib/ehcache-core-2.4.3.jar" size="1076169" download="eager" />
+    <jar href="lib/hibernate-c3p0-4.2.6.Final.jar" size="43918" download="eager" />
+    <jar href="lib/hibernate-commons-annotations-4.0.2.Final.jar" size="89644" download="eager" />
+    <jar href="lib/hibernate-core-4.2.6.Final.jar" size="4893106" download="eager" />
+    <jar href="lib/hibernate-ehcache-4.2.6.Final.jar" size="144208" download="eager" />
+    <jar href="lib/hibernate-entitymanager-4.2.6.Final.jar" size="513607" download="eager" />
+    <jar href="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" size="121844" download="eager" />
+    <jar href="lib/jBCrypt-0.4.jar" size="18604" download="eager" />
+    <jar href="lib/javassist-3.15.0-GA.jar" size="679658" download="eager" />
+    <jar href="lib/jboss-logging-3.1.0.GA.jar" size="66413" download="eager" />
+    <jar href="lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" size="28961" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="860474" download="eager" />
+    <jar href="lib/slf4j-api-1.6.1.jar" size="29185" download="eager" />
+    <jar href="lib/slf4j-simple-1.6.1.jar" size="9650" download="eager" />
+    <jar href="lib/validation-api-1.1.0.Final.jar" size="76338" download="eager" />
+>>>>>>> 592f9a0b2cd9ee69c45aeb701e9fa8f2e14a73f3:dist/casier.jnlp
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="casier" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="casier.Casier"  name="casier" />
+  <update check="always"/>
+</jnlp>

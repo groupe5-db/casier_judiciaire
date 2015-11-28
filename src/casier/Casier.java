@@ -6,7 +6,6 @@
 
 package casier;
 
-import casier.DAO.UtilisateurDAO;
 import casier.pdf.PdfViewer;
 import java.io.IOException;
 import java.util.logging.Level;

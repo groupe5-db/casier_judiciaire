@@ -16,11 +16,18 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.ColumnText;
+import com.lowagie.text.pdf.PdfCell;
 import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,23 +60,23 @@ public class PdfTemplate {
     
     // Informations of the concerning
     
-    private static final String NAME_FR = "Concernant M.";
+    private static final String NAME_FR = "Concernant M. ";
     private static final String NAME_EN = "Concerning M";
-    private static final String FATHER_NAME_FR = "Fils/fille de";
+    private static final String FATHER_NAME_FR = "Fils/fille de ";
     private static final String FATHER_NAME_EN = "Son/daugther of";
-    private static final String MOTHER_NAME_FR = "et de";
+    private static final String MOTHER_NAME_FR = " et de ";
     private static final String MOTHER_NAME_EN = "and of";
-    private static final String BIRTHDAY_FR = "Né(e) le";
+    private static final String BIRTHDAY_FR = "Né(e) le ";
     private static final String BIRTHDAY_EN = "Burn on";
-    private static final String BIRTHCITY_FR = "à";
+    private static final String BIRTHCITY_FR = " à ";
     private static final String BIRTHCITY_EN = "at";
-    private static final String RESIDENT_FR = "Domicilié(e) à";
+    private static final String RESIDENT_FR = "Domicilié(e) à ";
     private static final String RESIDENT_EN = "Resident at";
-    private static final String CIVIL_STATUS_FR = "Etat civil et de famille";
+    private static final String CIVIL_STATUS_FR = "Etat civil et de famille ";
     private static final String CIVIL_STATUS_EN = "Civil status";
-    private static final String PROFESSION_FR = "Profession";
+    private static final String PROFESSION_FR = "Profession ";
     private static final String PROFESSION_EN = "Profession";
-    private static final String NATIONALITE_FR = "Nationalité";
+    private static final String NATIONALITE_FR = "Nationalité ";
     private static final String NATIONALITE_EN = "Nationality";
     
     // Informations of the table of penalties
@@ -121,8 +128,26 @@ public class PdfTemplate {
     private static final Font style3 = new Font(Font.TIMES_ROMAN, 12, Font.BOLD);
     private static final Font style4 = new Font(Font.TIMES_ROMAN, 12, Font.BOLDITALIC);
     private static final Font style5 = new Font(Font.TIMES_ROMAN, 8, Font.NORMAL);
+    private static final Font style6 = new Font(Font.TIMES_ROMAN, 12, Font.ITALIC);
+    private static final Font style7 = new Font(Font.TIMES_ROMAN, 10, Font.BOLD);
+    private static final Font style8 = new Font(Font.TIMES_ROMAN, 8, Font.ITALIC);
+    private static final Font style9 = new Font(Font.TIMES_ROMAN, 8, Font.NORMAL);
     
-    public static File getCasierLikePdf(Personne personne, List<Peine> peine){
+    private static PdfPTable table;
+    private static PdfPCell date_c;
+    private static PdfPCell court_c;
+    private static PdfPCell nat_c;
+    private static PdfPCell off_c;
+    private static PdfPCell mandat_c;
+    private static PdfPCell obs_c;
+    
+    private static Personne personne;
+    private static List<Peine> peines;
+    
+    public static File getCasierLikePdf(Personne personne, List<Peine> peines){
+        
+        PdfTemplate.personne = personne;
+        PdfTemplate.peines = peines;
         
         PdfTemplate.filename = personne.equals(null) ? PdfTemplate.filename : personne.getNom()+".pdf";
         
@@ -162,8 +187,10 @@ public class PdfTemplate {
         setHeaderInformations();
         try {
             setBodyInformations();
+            setTableInformations();
         } catch (DocumentException e) {
         }
+        setFooterInformations();
         casier.close();
         
         
@@ -189,6 +216,22 @@ public class PdfTemplate {
     }
     
     private static void setBodyInformations() throws DocumentException{
+        
+        String parentSpacing = "";
+        String birthSpacing = "";
+        
+        if(personne == null){
+            parentSpacing = "                                 ";
+            birthSpacing = "                                 ";
+        }else{
+            for(int i = 0; i<=(FATHER_NAME_FR.length()+personne.getNomDuPere().length()-FATHER_NAME_EN.length()); i++){
+                parentSpacing +=" ";
+            }
+            for(int i = 0; i<=(BIRTHDAY_FR.length()+personne.getDateDeNaissance().toString().length()-BIRTHDAY_EN.length()); i++){
+                birthSpacing +=" ";
+            }
+        }
+        
         casier.add(INTERLIGNE);
         casier.add(INTERLIGNE);
         casier.add(INTERLIGNE);
@@ -208,7 +251,134 @@ public class PdfTemplate {
         
         casier.add(bul_fr);
         casier.add(bul_en);
-        casier.add(new Phrase(MSG_1_FR, style5));
+        casier.add(msg);
         casier.add(new Phrase(MSG_1_EN, style5));
+        
+        casier.add(INTERLIGNE);
+        
+        casier.add(new Paragraph(personne == null? NAME_FR : NAME_FR+personne.getNom()+" "+personne.getPrenom(), style));
+        casier.add(new Paragraph(NAME_EN, style6));
+        
+        casier.add(new Paragraph(personne == null? 
+                FATHER_NAME_FR+ "                                 "+MOTHER_NAME_FR : 
+                FATHER_NAME_FR+personne.getNomDuPere()+" "+MOTHER_NAME_FR+personne.getNomDeLaMere(), style));
+        casier.add(new Paragraph(FATHER_NAME_EN+parentSpacing+MOTHER_NAME_EN, style6));
+        
+        casier.add(new Paragraph(personne == null? 
+                BIRTHDAY_FR+ "                                 "+BIRTHCITY_FR : 
+                BIRTHDAY_FR+personne.getDateDeNaissance()+" "+BIRTHCITY_FR+personne.getLieuDeNaissance(), style));
+        casier.add(new Paragraph(BIRTHDAY_EN+birthSpacing+BIRTHCITY_EN, style6));
+        
+        casier.add(new Paragraph(personne == null? RESIDENT_FR : RESIDENT_FR+personne.getAdresse().getQuartier(), style));
+        casier.add(new Paragraph(RESIDENT_EN, style6));
+        
+        casier.add(new Paragraph(personne == null? CIVIL_STATUS_FR : CIVIL_STATUS_FR+personne.getSituationMatrimoniale(), style));
+        casier.add(new Paragraph(CIVIL_STATUS_EN, style6));
+        
+        casier.add(new Paragraph(personne == null? PROFESSION_FR : PROFESSION_FR+personne.getProfession(), style));
+        casier.add(new Paragraph(PROFESSION_EN, style6));
+        
+        casier.add(new Paragraph(personne == null? NATIONALITE_FR : NATIONALITE_FR+personne.getNationalite(), style));
+        casier.add(new Paragraph(NATIONALITE_EN, style6));
+        
+        casier.add(INTERLIGNE);
+        casier.add(INTERLIGNE);
+    }
+    
+    private static void setTableInformations() throws DocumentException{
+        table = new PdfPTable(6);
+        
+        date_c = new PdfPCell(new Phrase(CONDAMNATION_DAY_FR+"      "+CONDAMNATION_DAY_EN, style7));
+        court_c = new PdfPCell(new Phrase(COURT_FR+"      "+COURT_EN, style7));
+        nat_c = new PdfPCell(new Phrase(OFFENCES_FR+"      "+OFFENCES_EN, style7));
+        off_c = new PdfPCell(new Phrase(OFFENCES_DATE_FR+"      "+OFFENCES_DATE_EN, style7));
+        mandat_c = new PdfPCell(new Phrase(MANDAT_FR+"      "+MANDAT_EN, style7));
+        obs_c = new PdfPCell(new Phrase(OBSERVATIONS_FR+"      "+OBSERVATIONS_EN, style7));
+        
+        table.addCell(date_c);
+        table.addCell(court_c);
+        table.addCell(nat_c);
+        table.addCell(off_c);
+        table.addCell(mandat_c);
+        table.addCell(obs_c);
+        
+        setPeines(peines);
+        
+        casier.add(table);
+    }
+    
+    private static void setPeines(List<Peine> peines){
+            
+        if(peines != null){
+            if(peines.size()>0){
+                peines.stream().forEach((peine) -> {
+                    date_c = new PdfPCell(new Phrase(peine.getDateJugement().toString(), style));
+                    court_c = new PdfPCell(new Phrase(peine.getNomCours(), style));
+                    nat_c = new PdfPCell(new Phrase(peine.getInfraction().getNatureInfraction(), style));
+                    off_c = new PdfPCell(new Phrase(peine.getInfraction().getDateInfraction().toString(), style));
+                    mandat_c = new PdfPCell(new Phrase(peine.getCondamnation().getTypeDeMandat(), style));
+                    obs_c = new PdfPCell(new Phrase(peine.getInfraction().getTexts(), style));
+                    
+                    table.addCell(court_c);
+                    table.addCell(nat_c);
+                    table.addCell(off_c);
+                    table.addCell(mandat_c);
+                    table.addCell(obs_c);
+                });
+            }
+            else{
+                    date_c = new PdfPCell(new Phrase("  "));
+                    court_c = new PdfPCell(new Phrase("  "));
+                    nat_c = new PdfPCell(new Phrase("  "));
+                    off_c = new PdfPCell(new Phrase("  "));
+                    mandat_c = new PdfPCell(new Phrase("  "));
+                    obs_c = new PdfPCell(new Phrase("  "));
+                    
+                    table.addCell(date_c);
+                    table.addCell(court_c);
+                    table.addCell(nat_c);
+                    table.addCell(off_c);
+                    table.addCell(mandat_c);
+                    table.addCell(obs_c);
+            }
+        }
+        else{
+                    date_c = new PdfPCell(new Phrase("  "));
+                    court_c = new PdfPCell(new Phrase("  "));
+                    nat_c = new PdfPCell(new Phrase("  "));
+                    off_c = new PdfPCell(new Phrase("  "));
+                    mandat_c = new PdfPCell(new Phrase("  "));
+                    obs_c = new PdfPCell(new Phrase("  "));
+                    
+                    table.addCell(date_c);
+                    table.addCell(court_c);
+                    table.addCell(nat_c);
+                    table.addCell(off_c);
+                    table.addCell(mandat_c);
+                    table.addCell(obs_c);
+        }
+    }
+    
+    private static void setFooterInformations(){
+        Date d = new Date();
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(COST_FR, style9), casier.left() , casier.bottom()+50, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(COST_EN, style8), casier.left() , casier.bottom()+40, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(SEARCH_FR, style9), casier.left() , casier.bottom()+30, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(SEARCH_EN, style8), casier.left() , casier.bottom()+20, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(STAMP_FR, style9), casier.left() , casier.bottom()+10, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(STAMP_EN, style8), casier.left() , casier.bottom(), 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(PRICE_FR, style9), casier.left() , casier.bottom()-10, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(PRICE_EN, style8), casier.left() , casier.bottom()-20, 0);
+        
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(TODAY_FR+format.format(d), style), casier.left()+200 , casier.bottom()+50, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(TODAY_EN, style6), casier.left()+200 , casier.bottom()+40, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(PROCUREUR_FR, style7), casier.left()+200 , casier.bottom()+20, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(PROCUREUR_EN, style2), casier.left()+220 , casier.bottom()+10, 0);
+        
+        ColumnText.showTextAligned(canvas, Element.ALIGN_RIGHT, new Phrase(EXTRACT_FR, style7), casier.right() , casier.bottom()+50, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_RIGHT, new Phrase(EXTRACT_EN, style2), casier.right() , casier.bottom()+40, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_RIGHT, new Phrase(GREFFIER_FR, style7), casier.right() , casier.bottom()+20, 0);
+        ColumnText.showTextAligned(canvas, Element.ALIGN_RIGHT, new Phrase(GREFFIER_EN, style2), casier.right() , casier.bottom()+10, 0);
     }
 }

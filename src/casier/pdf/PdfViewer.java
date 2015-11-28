@@ -76,7 +76,7 @@ public class PdfViewer extends Application {
      * @param peines la liste des peines de la personne concernée
      * @throws IOException
      */
-    public void run(Stage stage, Personne personne, List<Peine> peines) throws IOException{
+    public void run(Stage stage, Personne personne, List<Peine> peines) throws IOException{ // fonction à utiliser comme evenement d'un bouton pour générer un casier judiciaire
             this.personne = personne;
             this.peines = peines;
             

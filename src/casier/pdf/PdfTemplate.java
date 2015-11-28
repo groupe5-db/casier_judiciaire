@@ -8,11 +8,13 @@ package casier.pdf;
 
 import casier.entities.Peine;
 import casier.entities.Personne;
+import com.lowagie.text.BadElementException;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
+import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.ColumnText;
@@ -25,10 +27,13 @@ import com.lowagie.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -149,7 +154,7 @@ public class PdfTemplate {
         PdfTemplate.personne = personne;
         PdfTemplate.peines = peines;
         
-        PdfTemplate.filename = personne.equals(null) ? PdfTemplate.filename : personne.getNom()+".pdf";
+        PdfTemplate.filename = personne == null ? PdfTemplate.filename : personne.getNom()+".pdf";
         
         casier = new Document();
         
@@ -163,6 +168,14 @@ public class PdfTemplate {
         
         casier.open();
         setHeaderInformations();
+        try {
+            setBodyInformations();
+            setTableInformations();
+        } catch (DocumentException e) {
+        } catch (IOException ex) {
+            Logger.getLogger(PdfTemplate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setFooterInformations();
         casier.close();
         
         
@@ -189,6 +202,8 @@ public class PdfTemplate {
             setBodyInformations();
             setTableInformations();
         } catch (DocumentException e) {
+        } catch (IOException ex) {
+            Logger.getLogger(PdfTemplate.class.getName()).log(Level.SEVERE, null, ex);
         }
         setFooterInformations();
         casier.close();
@@ -285,7 +300,7 @@ public class PdfTemplate {
         casier.add(INTERLIGNE);
     }
     
-    private static void setTableInformations() throws DocumentException{
+    private static void setTableInformations() throws DocumentException, BadElementException, IOException{
         table = new PdfPTable(6);
         
         date_c = new PdfPCell(new Phrase(CONDAMNATION_DAY_FR+"      "+CONDAMNATION_DAY_EN, style7));
@@ -307,7 +322,11 @@ public class PdfTemplate {
         casier.add(table);
     }
     
-    private static void setPeines(List<Peine> peines){
+    private static void setPeines(List<Peine> peines) throws BadElementException, IOException, DocumentException{
+            Image img = Image.getInstance("neant.png");
+            img.scaleAbsoluteWidth(300);
+        img.scaleAbsoluteHeight(300);
+        img.setAbsolutePosition((casier.getPageSize().getWidth()-img.getWidth()+casier.left()), ((casier.getPageSize().getHeight()-img.getHeight()+casier.bottom())/2));
             
         if(peines != null){
             if(peines.size()>0){
@@ -340,6 +359,8 @@ public class PdfTemplate {
                     table.addCell(off_c);
                     table.addCell(mandat_c);
                     table.addCell(obs_c);
+                    
+                    casier.add(img);
             }
         }
         else{
@@ -356,6 +377,8 @@ public class PdfTemplate {
                     table.addCell(off_c);
                     table.addCell(mandat_c);
                     table.addCell(obs_c);
+                    
+                    casier.add(img);
         }
     }
     

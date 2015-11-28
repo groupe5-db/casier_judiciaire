@@ -52,18 +52,7 @@ public class Casier extends Application {
             public void handle(ActionEvent event) {
                 PdfViewer pdf = new PdfViewer();
                 try {
-                    pdf.run(stage, null, null);
-//                if(resultat.getText().length() != 0)
-//                    resultat.setText(null);
-//                resultat.setFill(Color.FIREBRICK);
-//                nom = (!(loginInput.getText().equals(null) || loginInput.getText().equals("")))? loginInput.getText() : "";
-//                if(nom.equals(""))
-//                    resultat.setText("Vous n'avez pas rempli le nom");
-//                else
-//                    resultat.setText(nom);
-//                
-//                System.out.println(nom);
-                    //System.out.println("Hello World!");
+                    pdf.run(stage, null, null); // Création d'un casier judiciaire vierge
                 } catch (IOException ex) {
                     Logger.getLogger(Casier.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -148,6 +148,7 @@ public class PdfTemplate {
     
     private static Personne personne;
     private static List<Peine> peines;
+    private static final DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     
     public static File getCasierLikePdf(Personne personne, List<Peine> peines){
         
@@ -281,7 +282,7 @@ public class PdfTemplate {
         
         casier.add(new Paragraph(personne == null? 
                 BIRTHDAY_FR+ "                                 "+BIRTHCITY_FR : 
-                BIRTHDAY_FR+personne.getDateDeNaissance()+" "+BIRTHCITY_FR+personne.getLieuDeNaissance(), style));
+                BIRTHDAY_FR+format.format(personne.getDateDeNaissance())+" "+BIRTHCITY_FR+personne.getLieuDeNaissance(), style));
         casier.add(new Paragraph(BIRTHDAY_EN+birthSpacing+BIRTHCITY_EN, style6));
         
         casier.add(new Paragraph(personne == null? RESIDENT_FR : RESIDENT_FR+personne.getAdresse().getQuartier(), style));
@@ -384,7 +385,7 @@ public class PdfTemplate {
     
     private static void setFooterInformations(){
         Date d = new Date();
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        
         ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(COST_FR, style9), casier.left() , casier.bottom()+50, 0);
         ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(COST_EN, style8), casier.left() , casier.bottom()+40, 0);
         ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(SEARCH_FR, style9), casier.left() , casier.bottom()+30, 0);

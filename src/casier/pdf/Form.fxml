@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" id="Parent" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" fx:controller="casier.pdf.FormController">
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5" />
+    </padding>
+    <top>
+        <Label BorderPane.alignment="TOP_CENTER" text="Saisissez les informations et générez un casier judiciaire" minHeight="30" fx:id="title"   />
+    </top>
+    <left>
+        <Region prefHeight="100" prefWidth="50"   />
+    </left>
+    <center>
+        <GridPane BorderPane.alignment="CENTER_LEFT" >
+            <padding>
+                <Insets bottom="2" left="2" right="2" top="2" />
+            </padding>
+            
+            <Label text="NUMERO ACTE: " GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Acte de naissance" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="acte_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="NOM: " GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Nom" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="nom_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+             <Label text="PRÉNOM: " GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Prénom" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="prenom_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="SITUATION MATRIMONIALE: " GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <ComboBox promptText="Situation matrimoniale" GridPane.columnIndex="1" GridPane.rowIndex="3"  fx:id="situation_f"  >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                <items>
+                    <FXCollections  fx:factory="observableArrayList">
+                        <String fx:value="Marié" />
+                        <String fx:value="Mariée" />
+                        <String fx:value="Célibataire" />
+                        <String fx:value="Divorcé" />
+                        <String fx:value="Divorcée" />
+                        <String fx:value="Veuf" />
+                        <String fx:value="Veuve" />
+                    </FXCollections> 
+                </items>
+            </ComboBox>
+            
+            <Label text="NOM DU PÈRE: " GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Père" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="pere_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="NOM DE LA MÈRE: " GridPane.columnIndex="0" GridPane.rowIndex="5" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Mère" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="mere_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="PROFESSION: " GridPane.columnIndex="0" GridPane.rowIndex="6">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Profession" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="profession_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="DOMICILE À: " GridPane.columnIndex="0" GridPane.rowIndex="7">
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </Label>
+            <TextField promptText="Domicile" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="7" fx:id="domicile_f" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="8"  >
+                <Label text="DATE DE NAISSANCE: " >
+                    <HBox.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </HBox.margin>
+                </Label>
+                <DatePicker promptText="Naissance" fx:id="date_f" >
+                    <HBox.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </HBox.margin>
+                </DatePicker>
+            </HBox>
+            <HBox GridPane.columnIndex="1" GridPane.rowIndex="8"  >
+                <Label text="À " >
+                    <HBox.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </HBox.margin>
+                </Label>
+                <TextField promptText="Lieu" fx:id="lieu_f" >
+                <HBox.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </HBox.margin>
+            </TextField>
+            </HBox>
+            <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="10"  >
+                <padding>
+                    <Insets bottom="5" top="5" right="5" left="5"/>    
+                </padding>
+                <top>
+                    <Button BorderPane.alignment="TOP_CENTER" text="Générer" onAction="#handleOpenForm" fx:id="submit" >
+            </Button>
+                </top>
+            </BorderPane>
+            
+        </GridPane>
+    </center>
+    <stylesheets>
+        <URL value="@form.css"/>
+    </stylesheets>
+</BorderPane>

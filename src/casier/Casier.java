@@ -6,6 +6,7 @@
 
 package casier;
 
+import casier.pdf.Form;
 import casier.pdf.PdfViewer;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -50,9 +51,17 @@ public class Casier extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-                PdfViewer pdf = new PdfViewer();
+//                PdfViewer pdf = new PdfViewer();
+//                try {
+//                    pdf.run(stage, null, null); // Création d'un casier judiciaire vierge
+//                } catch (IOException ex) {
+//                    Logger.getLogger(Casier.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                
+                Form form = new Form();
+                
                 try {
-                    pdf.run(stage, null, null); // Création d'un casier judiciaire vierge
+                    form.start(stage);
                 } catch (IOException ex) {
                     Logger.getLogger(Casier.class.getName()).log(Level.SEVERE, null, ex);
                 }

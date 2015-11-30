@@ -6,6 +6,9 @@
 
 package casier.util.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author armel
@@ -29,4 +32,5 @@ public enum SituationMatrimoniale {
     public String toString(){
         return situation;
     }
+    
 }

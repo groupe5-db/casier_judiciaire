@@ -6,11 +6,11 @@
 
 package casier.pdf;
 
-import casier.DAO.PeineDAO;
-import casier.DAO.PersonneDAO;
 import casier.entities.Peine;
 import casier.entities.Personne;
 import casier.entities.embed.Adresse;
+import casier.services.CasierInfosProvider;
+import casier.services.CasierInfosProviderImpl;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -39,9 +39,7 @@ public class FormController implements Initializable {
     
     private List<Peine> peines;
     
-    private PersonneDAO persDao = new PersonneDAO();
-    
-    private PeineDAO peineDao = new PeineDAO();
+    CasierInfosProvider provider;
     
     @FXML
     private TextField acte_f;
@@ -98,7 +96,9 @@ public class FormController implements Initializable {
     }
     
     private void setPersonneValues(){
-        personne = acte_f.getText() == null || acte_f.getText().equals("")? null : persDao.findById(acte_f.getText());
+        provider = new CasierInfosProviderImpl(acte_f.getText());
+        personne = provider.getPersonne();
+        peines = provider.getPeines();
         
         if(personne == null){
             peines = null;
@@ -123,10 +123,7 @@ public class FormController implements Initializable {
         personne.setLieuDeNaissance(lieu_f.getText() == null || lieu_f.getText().equals("")? null : lieu_f.getText());
         personne.setNationalite("Camerounaise");
         }
-        else{
-            peines = peineDao.findByCriteria("numeroActe", personne.getNumeroActe());
-           
-        } 
+        
     }
     
 }

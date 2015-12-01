@@ -6,9 +6,6 @@
 
 package casier.services;
 
-import casier.DAO.GenericDAO;
-import casier.DAO.PeineDAO;
-import casier.DAO.PersonneDAO;
 import casier.entities.Peine;
 import casier.entities.Personne;
 import java.util.List;
@@ -16,17 +13,17 @@ import java.util.List;
 
 public class CasierInfosProviderImpl implements CasierInfosProvider {
     
-    private final GenericDAO personneDao = new PersonneDAO();
+    private final Resource personneRs = new PersonneResource();
     
-    private final GenericDAO peineDao = new PeineDAO();
+    private final PeineResource peineRs = new PeineResource();
     
     private Personne personne = null;
     
     private List<Peine> peines = null;
 
     public CasierInfosProviderImpl(String numeroActe) {
-        personne = (Personne) personneDao.findById(numeroActe);
-        peines = peineDao.findByCriteria("numeroActe", personne.getNumeroActe());
+        personne = (Personne) personneRs.get(numeroActe);
+        peines = personne != null ? peineRs.getByPerson(personne) : null;
     }
 
     @Override

@@ -8,6 +8,7 @@ package casier.DAO;
 
 import casier.DAO.exceptions.NonexistentEntityException;
 import casier.DAO.exceptions.PreexistingEntityException;
+import casier.entities.Peine;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -39,5 +40,7 @@ public interface GenericDAO<T, ID extends Serializable> {
     List<T> findByMultiCriterias(Map propertiesNamesValues);
     
     int count();
+
+    public List<T> findAll(int maxResut);
     
 }

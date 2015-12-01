@@ -8,26 +8,26 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="casier.jar" size="78061" download="eager" />
-    <jar href="lib/PDFRenderer-0.9.1.jar" size="2140607" download="eager" />
+    <jar href="casier.jar" size="83840" download="eager" />
+    <jar href="lib/PDFRenderer-0.9.1.jar" size="2140609" download="eager" />
     <jar href="lib/antlr-2.7.7.jar" size="457982" download="eager" />
     <jar href="lib/c3p0-0.9.2.1.jar" size="443576" download="eager" />
-    <jar href="lib/dom4j-1.6.1.jar" size="327660" download="eager" />
+    <jar href="lib/dom4j-1.6.1.jar" size="327658" download="eager" />
     <jar href="lib/ehcache-core-2.4.3.jar" size="1076328" download="eager" />
-    <jar href="lib/hibernate-c3p0-4.2.6.Final.jar" size="43920" download="eager" />
+    <jar href="lib/hibernate-c3p0-4.2.6.Final.jar" size="43918" download="eager" />
     <jar href="lib/hibernate-commons-annotations-4.0.2.Final.jar" size="89645" download="eager" />
     <jar href="lib/hibernate-core-4.2.6.Final.jar" size="4892308" download="eager" />
-    <jar href="lib/hibernate-ehcache-4.2.6.Final.jar" size="144218" download="eager" />
+    <jar href="lib/hibernate-ehcache-4.2.6.Final.jar" size="144216" download="eager" />
     <jar href="lib/hibernate-entitymanager-4.2.6.Final.jar" size="513478" download="eager" />
-    <jar href="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" size="121856" download="eager" />
+    <jar href="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" size="121854" download="eager" />
     <jar href="lib/itext-2.1.7.jar" size="1183058" download="eager" />
     <jar href="lib/jBCrypt-0.4.jar" size="18588" download="eager" />
     <jar href="lib/javassist-3.15.0-GA.jar" size="679687" download="eager" />
     <jar href="lib/jboss-logging-3.1.0.GA.jar" size="66410" download="eager" />
-    <jar href="lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" size="28962" download="eager" />
+    <jar href="lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" size="28960" download="eager" />
     <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="860442" download="eager" />
-    <jar href="lib/slf4j-api-1.6.1.jar" size="29175" download="eager" />
-    <jar href="lib/slf4j-simple-1.6.1.jar" size="9648" download="eager" />
+    <jar href="lib/slf4j-api-1.6.1.jar" size="29177" download="eager" />
+    <jar href="lib/slf4j-simple-1.6.1.jar" size="9650" download="eager" />
     <jar href="lib/validation-api-1.1.0.Final.jar" size="76319" download="eager" />
   </resources>
 <security>

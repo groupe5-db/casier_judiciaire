@@ -13,3 +13,6 @@ easyride-ui/.idea/
 
 
 
+dist/
+build/
+nbproject/

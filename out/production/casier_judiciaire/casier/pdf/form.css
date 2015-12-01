@@ -1,0 +1,23 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.label{
+    -fx-font-weight: bold;
+    
+}
+
+.textfield{
+    -fx-alignment: BASELINE_RIGHT;
+    
+}
+
+#submit{
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+    
+}

@@ -6,29 +6,21 @@
 
 package casier.pdf;
 
+import casier.DAO.PeineDAO;
+import casier.DAO.PersonneDAO;
+import casier.entities.Peine;
 import casier.entities.Personne;
 import casier.entities.embed.Adresse;
-import casier.util.enums.SituationMatrimoniale;
-import com.sun.javafx.collections.ObservableListWrapper;
-import java.io.IOException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -44,6 +36,12 @@ public class FormController implements Initializable {
     private Personne personne;
     
     private Adresse adr;
+    
+    private List<Peine> peines;
+    
+    private PersonneDAO persDao = new PersonneDAO();
+    
+    private PeineDAO peineDao = new PeineDAO();
     
     @FXML
     private TextField acte_f;
@@ -92,7 +90,7 @@ public class FormController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Visualiseur de casier");
             setPersonneValues();
-            viewer.run(stage, personne, null);
+            viewer.run(stage, personne, peines);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +98,10 @@ public class FormController implements Initializable {
     }
     
     private void setPersonneValues(){
-       
+        personne = acte_f.getText() == null || acte_f.getText().equals("")? null : persDao.findById(acte_f.getText());
+        
+        if(personne == null){
+            peines = null;
         personne = new Personne();
         adr = new Adresse();
         LocalDate local = date_f.getValue();
@@ -121,8 +122,11 @@ public class FormController implements Initializable {
         personne.setDateDeNaissance(date== null? null : date);
         personne.setLieuDeNaissance(lieu_f.getText() == null || lieu_f.getText().equals("")? null : lieu_f.getText());
         personne.setNationalite("Camerounaise");
-        
-        
+        }
+        else{
+            peines = peineDao.findByCriteria("numeroActe", personne.getNumeroActe());
+           
+        } 
     }
     
 }

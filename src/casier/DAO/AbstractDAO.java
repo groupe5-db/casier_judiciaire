@@ -63,8 +63,10 @@ public abstract class AbstractDAO<T, ID extends Serializable> implements Generic
     @Override
     public T findById(ID id) {
         T entity;
+        String query = "from Personne where id = "+id;
         start();
-        entity = (T) getSession().load(entityClass, id);
+        Query q = getSession().createQuery(query);
+        entity = (T)q.uniqueResult();
         end();
         return entity;
     }
@@ -137,7 +139,7 @@ public abstract class AbstractDAO<T, ID extends Serializable> implements Generic
     @Override
     public int count() {
         int i = 0;
-        String query = "select count(*) from Peine";
+        String query = "select count(*) from "+getEntityClass();
         start();
         Query q = getSession().createQuery(query);
         i = ((Long)q.uniqueResult()).intValue();

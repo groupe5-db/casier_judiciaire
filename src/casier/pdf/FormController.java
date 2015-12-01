@@ -11,6 +11,7 @@ import casier.entities.Personne;
 import casier.entities.embed.Adresse;
 import casier.services.CasierInfosProvider;
 import casier.services.CasierInfosProviderImpl;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -89,8 +91,8 @@ public class FormController implements Initializable {
             stage.setTitle("Visualiseur de casier");
             setPersonneValues();
             viewer.run(stage, personne, peines);
-
-        } catch (Exception e) {
+            
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

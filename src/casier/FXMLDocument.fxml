@@ -5,10 +5,24 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casier.FXMLDocumentController">
-    <children>
-        <!--Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" /-->
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
-</AnchorPane>
+<BorderPane id="BorderPane" prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casier.FXMLDocumentController">
+    <top>
+        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" text="Welcome" BorderPane.alignment="TOP_CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <VBox BorderPane.alignment="CENTER" >
+            <padding>
+                <Insets bottom="10" top="10" right="10" left="10" />
+            </padding>
+        <Button layoutX="126" layoutY="90" text="Génération Casier" onAction="#handleButtonAction" fx:id="button" />
+        <Button layoutX="126" layoutY="90" text="Enregistrement des personnes" onAction="#openPersonRegisterForm"  fx:id="register" />
+        </VBox>
+        
+    </center>
+</BorderPane>

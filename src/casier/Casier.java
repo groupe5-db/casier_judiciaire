@@ -36,14 +36,14 @@ public class Casier extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Button btn = new Button("casier");
-        HBox hbtn = new HBox(10);
-        hbtn.setAlignment(Pos.CENTER);
-        hbtn.getChildren().add(btn);
-        
-        GridPane grid = new GridPane();
-        
-        grid.setPadding(new Insets(5, 5, 5, 5));
-        grid.add(hbtn, 4, (int)((grid.getHeight()/2)+6));
+//        HBox hbtn = new HBox(10);
+//        hbtn.setAlignment(Pos.CENTER);
+//        hbtn.getChildren().add(btn);
+//        
+//        GridPane grid = new GridPane();
+//        
+//        grid.setPadding(new Insets(5, 5, 5, 5));
+//        grid.add(hbtn, 4, (int)((grid.getHeight()/2)+6));
         
         stage.setTitle(APP_TITLE);
         
@@ -51,25 +51,18 @@ public class Casier extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-//                PdfViewer pdf = new PdfViewer();
+//                Form form = new Form();
+//                
 //                try {
-//                    pdf.run(stage, null, null); // Création d'un casier judiciaire vierge
+//                    form.start(stage);
 //                } catch (IOException ex) {
 //                    Logger.getLogger(Casier.class.getName()).log(Level.SEVERE, null, ex);
 //                }
-                
-                Form form = new Form();
-                
-                try {
-                    form.start(stage);
-                } catch (IOException ex) {
-                    Logger.getLogger(Casier.class.getName()).log(Level.SEVERE, null, ex);
-                }
 }
         });
 
         
-        Scene scene = new Scene(grid, 300, 250);
+        Scene scene = new Scene(root, 300, 250);
         
         stage.setScene(scene);
         stage.show();

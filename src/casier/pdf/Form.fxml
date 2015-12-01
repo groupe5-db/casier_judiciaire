@@ -20,6 +20,7 @@
         <Region prefHeight="100" prefWidth="50"   />
     </left>
     <center>
+        <VBox>
         <GridPane BorderPane.alignment="CENTER_LEFT" >
             <padding>
                 <Insets bottom="2" left="2" right="2" top="2" />
@@ -148,17 +149,17 @@
                 </HBox.margin>
             </TextField>
             </HBox>
-            <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="10"  >
+        </GridPane>
+        <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="10"  >
                 <padding>
-                    <Insets bottom="5" top="5" right="5" left="5"/>    
+                    <Insets bottom="5" top="15" right="5" left="5"/>    
                 </padding>
                 <top>
                     <Button BorderPane.alignment="TOP_CENTER" text="Générer" onAction="#handleOpenForm" fx:id="submit" >
             </Button>
                 </top>
             </BorderPane>
-            
-        </GridPane>
+        </VBox>
     </center>
     <stylesheets>
         <URL value="@form.css"/>

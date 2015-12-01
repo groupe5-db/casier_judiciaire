@@ -1,0 +1,15 @@
+/.idea/
+/**/.idea
+/**/target/
+/**/.classpath
+/**/.project
+/**/.settings/
+**.**~
+easyride-ui/.idea/
+/**/*.pdf
+/**/*.xsl
+*.iml
+/**/*.iml
+
+
+

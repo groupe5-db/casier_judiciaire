@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casier.controller.LoginController">
+   <children>
+      <VBox layoutX="161.0" layoutY="39.0" spacing="50.0">
+         <children>
+            <AnchorPane layoutX="256.0" layoutY="39.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="256.0" layoutY="39.0" text="Login Page" textFill="#6a2cf2" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="161.0" layoutY="134.0">
+               <children>
+                  <VBox spacing="20.0">
+                     <children>
+                        <HBox layoutX="1.0" spacing="50.0">
+                           <children>
+                              <Label layoutX="1.0" layoutY="5.0" text="Matricle" />
+                              <TextField fx:id="matricule" layoutX="95.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox layoutY="37.0" spacing="40.0">
+                           <children>
+                              <Label layoutY="41.0" text="Password" />
+                              <TextField fx:id="password" layoutX="94.0" layoutY="37.0" prefHeight="25.0" prefWidth="189.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="243.0" layoutY="251.0">
+               <children>
+                  <HBox alignment="TOP_RIGHT" spacing="50.0">
+                     <children>
+                        <Button fx:id="cancelBtn" contentDisplay="CENTER" layoutX="243.0" layoutY="252.0" mnemonicParsing="false" text="Cancel" />
+                        <Button fx:id="loginBtn" layoutX="331.0" layoutY="251.0" mnemonicParsing="false" onAction="#onLogin" text="Login" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Label fx:id="message" layoutX="273.0" layoutY="362.0" text="Message" />
+   </children>
+</AnchorPane>

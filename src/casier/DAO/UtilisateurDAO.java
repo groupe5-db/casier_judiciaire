@@ -90,5 +90,9 @@ public class UtilisateurDAO extends AbstractDAO<Utilisateur, String> implements 
         }
     }
 
+    public static UtilisateurDAO builder(){
+        return new UtilisateurDAO();
+    }
+
     
 }

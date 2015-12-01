@@ -34,7 +34,7 @@ public class PersonneDAO extends AbstractDAO<Personne, String>implements Seriali
             }
             throw ex;
         } finally {
-            if (getSession() != null) {
+            if (getSession() != null && getSession().isOpen()) {
                 getSession().close();
             }
         }
@@ -116,6 +116,10 @@ public class PersonneDAO extends AbstractDAO<Personne, String>implements Seriali
                 getSession().close();
             }
         }
+    }
+
+    public static PersonneDAO builder(){
+        return new PersonneDAO();
     }
 
     

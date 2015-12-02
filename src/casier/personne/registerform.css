@@ -5,3 +5,9 @@
 .mainFxmlClass {
 
 }
+
+#title{
+    -fx-text-fill: navy;
+    -fx-font-weight: bold;
+    -fx-font-size: xx-large;
+}

@@ -14,7 +14,7 @@
         <Insets bottom="5" left="5" right="5" top="5" />
     </padding>
     <top>
-        <Label BorderPane.alignment="TOP_CENTER" text="Enregistrement d'une personne" minHeight="30" fx:id="title"   />
+        <Label BorderPane.alignment="TOP_CENTER" text="Enregistrement d'une personne" minHeight="100" fx:id="title"   />
     </top>
     <left>
         <Region prefHeight="100" prefWidth="150"   />
@@ -81,6 +81,8 @@
                 </items>
             </ComboBox>
             
+            
+            
             <Label text="NOM DU PÈRE: " GridPane.columnIndex="0" GridPane.rowIndex="2">
                 <GridPane.margin>
                     <Insets bottom="5" left="0" right="10" top="0" />
@@ -136,12 +138,12 @@
                 </GridPane.margin>
                 </DatePicker>
   
-                <Label text="Lieu " GridPane.columnIndex="2" GridPane.rowIndex="4" >
+                <Label text="LIEU: " GridPane.columnIndex="2" GridPane.rowIndex="4" >
                     <GridPane.margin>
                     <Insets bottom="5" left="0" right="10" top="0" />
                 </GridPane.margin>
                 </Label>
-                <TextField promptText="LIEU:" fx:id="lieu_f" GridPane.columnIndex="3" GridPane.rowIndex="4" >
+                <TextField promptText="Lieu" fx:id="lieu_f" GridPane.columnIndex="3" GridPane.rowIndex="4" >
                 <GridPane.margin>
                     <Insets bottom="5" left="0" right="10" top="0" />
                 </GridPane.margin>
@@ -169,7 +171,128 @@
                     <Insets bottom="5" left="0" right="10" top="0" />
                 </GridPane.margin>
                 </Label>
-                <TextField promptText="Lieu" fx:id="nat_f" GridPane.columnIndex="3" GridPane.rowIndex="5" >
+                <TextField promptText="nationalité" fx:id="nationalite_f" GridPane.columnIndex="3" GridPane.rowIndex="5" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="DÉPARTEMENT: " GridPane.columnIndex="0" GridPane.rowIndex="6" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Departement d'origine" fx:id="departement_f" GridPane.columnIndex="1" GridPane.rowIndex="6" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="ARRONDISSEMENT: " GridPane.columnIndex="2" GridPane.rowIndex="6" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Arrondissement d'origine" fx:id="arrondissement_f" GridPane.columnIndex="3" GridPane.rowIndex="6" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="VILLE: " GridPane.columnIndex="0" GridPane.rowIndex="7" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Ville" fx:id="ville_f" GridPane.columnIndex="1" GridPane.rowIndex="7" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="QUARTIER: " GridPane.columnIndex="2" GridPane.rowIndex="7" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Quartier" fx:id="quartier_f" GridPane.columnIndex="3" GridPane.rowIndex="7" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="BOITE POSTALE: " GridPane.columnIndex="0" GridPane.rowIndex="8" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="BP" fx:id="bp_f" GridPane.columnIndex="1" GridPane.rowIndex="8" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="TEINT: " GridPane.columnIndex="2" GridPane.rowIndex="8" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField fx:id="teint_f" GridPane.columnIndex="3" GridPane.rowIndex="8" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </TextField>
+                
+                <Label text="COULEUR DES CHEVEUX: " GridPane.columnIndex="0" GridPane.rowIndex="9" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField  fx:id="cheveux_f" GridPane.columnIndex="1" GridPane.rowIndex="9" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </TextField>
+                
+                <Label text="TAILLE: " GridPane.columnIndex="2" GridPane.rowIndex="9" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Taille" fx:id="taille_f" GridPane.columnIndex="3" GridPane.rowIndex="9" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="SIGNE PARTICULIER: " GridPane.columnIndex="0" GridPane.rowIndex="10" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Signe" fx:id="signe_f" GridPane.columnIndex="1" GridPane.rowIndex="10" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="NOMBRE D'ENFANT: " GridPane.columnIndex="2" GridPane.rowIndex="10" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Nombre" fx:id="child_f" GridPane.columnIndex="3" GridPane.rowIndex="10" >
+                <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+            </TextField>
+            
+            <Label text="COULEUR DES YEUX: " GridPane.columnIndex="0" GridPane.rowIndex="11" >
+                    <GridPane.margin>
+                    <Insets bottom="5" left="0" right="10" top="0" />
+                </GridPane.margin>
+                </Label>
+                <TextField promptText="Couleur des yeux" fx:id="eye_f" GridPane.columnIndex="1" GridPane.rowIndex="11" >
                 <GridPane.margin>
                     <Insets bottom="5" left="0" right="10" top="0" />
                 </GridPane.margin>
@@ -181,12 +304,17 @@
                     <Insets bottom="5" top="25" right="5" left="5"/>    
                 </padding>
                 <top>
-                    <Button BorderPane.alignment="TOP_CENTER" text="Enregistrer" fx:id="submit" >
+                    <Button BorderPane.alignment="TOP_CENTER" text="Enregistrer" fx:id="submit" onAction="#savePerson"  >
             </Button>
                 </top>
             </BorderPane>
         </VBox>
     </center>
+    <right>
+        <VBox fx:id="error">
+            
+        </VBox>
+    </right>
     <stylesheets>
         <URL value="@registerform.css"/>
     </stylesheets>

@@ -6,6 +6,8 @@
 
 package casier.entities.embed;
 
+import casier.entities.BaseEntity;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -15,9 +17,8 @@ import javax.persistence.Embeddable;
  * @author armel
  */
 @Embeddable
-public class Adresse implements Serializable {
-    private static final long serialVersionUID = 1L;
-    
+public class Adresse extends BaseEntity {
+
     @Column(nullable = false)
     private String ville;
     
@@ -25,6 +26,15 @@ public class Adresse implements Serializable {
     private String quartier;
     
     private String BP;
+
+    public Adresse() {
+    }
+
+    public Adresse(String ville, String quartier, String BP) {
+        this.ville = ville;
+        this.quartier = quartier;
+        this.BP = BP;
+    }
 
     public String getVille() {
         return ville;

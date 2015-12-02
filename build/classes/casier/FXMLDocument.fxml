@@ -7,6 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
+<<<<<<< HEAD
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casier.controller.LoginController">
+    <children>
+        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
+        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+    </children>
+</AnchorPane>
+=======
 <BorderPane id="BorderPane" prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casier.FXMLDocumentController">
     <top>
         <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" text="Welcome" BorderPane.alignment="TOP_CENTER">
@@ -26,3 +34,4 @@
         
     </center>
 </BorderPane>
+>>>>>>> 50048de006f8e2c68e2dd0496d1ce1f3457ca28a

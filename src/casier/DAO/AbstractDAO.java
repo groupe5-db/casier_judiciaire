@@ -10,11 +10,13 @@ import casier.DAO.exceptions.NonexistentEntityException;
 import casier.DAO.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
@@ -46,14 +48,17 @@ public abstract class AbstractDAO<T, ID extends Serializable> implements Generic
     }
     
     protected void start(){
-        
-        openSession().beginTransaction();
-        
+
+        Transaction transaction = openSession().beginTransaction();
+        transaction.toString();
+
+
     }
     
     protected void end(){
         getSession().getTransaction().commit();
-        getSession().close();
+        Connection connection = getSession().close();
+
     }
     
     private Class<T> getEntityClass(){

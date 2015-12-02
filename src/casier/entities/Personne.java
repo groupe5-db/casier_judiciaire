@@ -9,11 +9,7 @@ package casier.entities;
 import casier.entities.embed.Adresse;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,9 +18,7 @@ import javax.validation.constraints.Size;
  * @author armel
  */
 @Entity
-public class Personne implements Serializable {
-    private static final long serialVersionUID = 1L;
-    
+public class Personne extends BaseEntity {
     @Id
     private String numeroActe;
     
@@ -63,7 +57,8 @@ public class Personne implements Serializable {
     
     @NotNull
     @Size(min = 3, max = 50)
-    private String situationMatrimoniale;
+    @Enumerated(EnumType.STRING)
+    private UserSituationMatrimoniale situationMatrimoniale;
     
     @NotNull
     private int nombreEnfant;
@@ -93,7 +88,8 @@ public class Personne implements Serializable {
     
     @NotNull
     @Size(min = 1, max = 9)
-    private String sexe;
+    @Enumerated(EnumType.STRING)
+    private UserSexe sexe;
     
     private String signesParticuliers;
     
@@ -178,11 +174,11 @@ public class Personne implements Serializable {
         this.profession = profession;
     }
 
-    public String getSituationMatrimoniale() {
+    public UserSituationMatrimoniale getSituationMatrimoniale() {
         return situationMatrimoniale;
     }
 
-    public void setSituationMatrimoniale(String situationMatrimoniale) {
+    public void setSituationMatrimoniale(UserSituationMatrimoniale situationMatrimoniale) {
         this.situationMatrimoniale = situationMatrimoniale;
     }
 
@@ -242,11 +238,11 @@ public class Personne implements Serializable {
         this.teint = teint;
     }
 
-    public String getSexe() {
+    public UserSexe getSexe() {
         return sexe;
     }
 
-    public void setSexe(String sexe) {
+    public void setSexe(UserSexe sexe) {
         this.sexe = sexe;
     }
 

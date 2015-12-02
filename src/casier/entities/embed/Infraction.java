@@ -6,6 +6,8 @@
 
 package casier.entities.embed;
 
+import casier.entities.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Embeddable;
@@ -18,9 +20,7 @@ import javax.validation.constraints.NotNull;
  * @author armel
  */
 @Embeddable
-public class Infraction implements Serializable {
-    private static final long serialVersionUID = 1L;
-    
+public class Infraction extends BaseEntity {
     @NotNull
     private String qualificationInfraction;
     

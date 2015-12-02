@@ -7,14 +7,7 @@
 package casier.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-import javax.persistence.Version;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.mindrot.jbcrypt.BCrypt;
@@ -24,12 +17,11 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author armel
  */
 @Entity
-public class Utilisateur implements Serializable {
+public class Utilisateur extends BaseEntity{
     
     @Transient
-    private static final String SALT = BCrypt.gensalt(12);
-    
-    private static final long serialVersionUID = 1L;
+    public static final String SALT = BCrypt.gensalt(12);
+
     @Id
     private String matricule;
     
@@ -37,7 +29,8 @@ public class Utilisateur implements Serializable {
     private String password;
     
     @NotNull
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
     
     private String fonction;
     
@@ -68,14 +61,14 @@ public class Utilisateur implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password, SALT);
+        this.password = password;
     }
-    
-    public String getRole(){
+
+    public UserRole getRole() {
         return role;
     }
-    
-    public void setRole(String role){
+
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -118,6 +111,11 @@ public class Utilisateur implements Serializable {
         return hash;
     }
 
+    @PostPersist
+    public void  encryptPassword(){
+        this.password = BCrypt.hashpw(this.password, SALT);
+    }
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -130,7 +128,15 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return personne.getNom()+" "+personne.getPrenom()+" matricule : "+matricule;
+        return "Utilisateur{" +
+                "matricule='" + matricule + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", fonction='" + fonction + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", personne=" + personne +
+                ", version=" + version +
+                '}';
     }
-    
 }

@@ -29,12 +29,11 @@ import javax.validation.constraints.NotNull;
  * @author armel
  */
 @Entity
-public class Peine implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Peine extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    
+
     @NotNull
     private String nomCours;
     

@@ -13,12 +13,12 @@ public abstract class Personne_ {
 	public static volatile SingularAttribute<Personne, String> profession;
 	public static volatile SingularAttribute<Personne, String> nationalite;
 	public static volatile SingularAttribute<Personne, String> numeroActe;
-	public static volatile SingularAttribute<Personne, String> situationMatrimoniale;
+	public static volatile SingularAttribute<Personne, UserSituationMatrimoniale> situationMatrimoniale;
 	public static volatile SingularAttribute<Personne, String> departement;
 	public static volatile SingularAttribute<Personne, String> couleurDesYeux;
 	public static volatile SingularAttribute<Personne, String> arrondissement;
 	public static volatile SingularAttribute<Personne, String> lieuDeNaissance;
-	public static volatile SingularAttribute<Personne, String> sexe;
+	public static volatile SingularAttribute<Personne, UserSexe> sexe;
 	public static volatile SingularAttribute<Personne, String> teint;
 	public static volatile SingularAttribute<Personne, String> nom;
 	public static volatile SingularAttribute<Personne, Date> dateDeNaissance;

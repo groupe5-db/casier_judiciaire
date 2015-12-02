@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Utilisateur_ {
 
 	public static volatile SingularAttribute<Utilisateur, String> password;
-	public static volatile SingularAttribute<Utilisateur, String> role;
+	public static volatile SingularAttribute<Utilisateur, UserRole> role;
 	public static volatile SingularAttribute<Utilisateur, String> matricule;
 	public static volatile SingularAttribute<Utilisateur, Personne> personne;
 	public static volatile SingularAttribute<Utilisateur, String> fonction;

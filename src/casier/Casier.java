@@ -70,7 +70,7 @@ public class Casier extends Application {
 }
         });
 
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, Double.MAX_VALUE, Double.MAX_VALUE);
         
         stage.setScene(scene);
         stage.show();

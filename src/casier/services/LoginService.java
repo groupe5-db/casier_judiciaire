@@ -24,8 +24,8 @@ public class LoginService {
         }else {
             message.append("know User with this matricule : " + matricule + "\n");
             String utilisateurPassword = utilisateur.getPassword();
-            String encryptPwd = BCrypt.hashpw(password, Utilisateur.SALT); // TODO : Check PWD here !
-            if(!utilisateurPassword.equals(encryptPwd)){
+            boolean validPwd = utilisateurPassword.equals(password);//BCrypt.checkpw(password,utilisateurPassword); // TODO : Check PWD here !
+            if(!validPwd){
                 message.append("But, Password don't match !");
             }
         }

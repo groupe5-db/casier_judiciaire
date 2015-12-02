@@ -7,6 +7,8 @@
 package casier.personne;
 
 import casier.entities.Personne;
+import casier.entities.UserSexe;
+import casier.entities.UserSituationMatrimoniale;
 import casier.entities.embed.Adresse;
 import casier.services.PersonneResource;
 import casier.services.Resource;
@@ -51,7 +53,7 @@ public class RegisterFormController implements Initializable {
     @FXML
     private ComboBox<String> situation_f;
     
-    private String situation;
+    private UserSituationMatrimoniale situation;
     
     @FXML
     private TextField pere_f;
@@ -86,7 +88,7 @@ public class RegisterFormController implements Initializable {
     @FXML
     private ComboBox<String> sexe_f;
     
-    private String sexe;
+    private UserSexe sexe;
     
     @FXML
     private TextField nationalite_f;
@@ -191,11 +193,11 @@ public class RegisterFormController implements Initializable {
         acte = validString(acte_f.getText(), "Acte de naissance");
         nom = validString(nom_f.getText(), "Nom");
         prenom = prenom_f.getText();
-        situation = validString(situation_f.getValue(), "Situation matrimoniale");
+        situation = UserSituationMatrimoniale.valueOf(situation_f.getValue());
         pere = validString(pere_f.getText(), "Nom du père");
         mere = validString(mere_f.getText(), "Nom de la mère");
         profession = validString(profession_f.getText(), "Profession");
-        sexe = validString(sexe_f.getValue(), "Sexe");
+        sexe = UserSexe.valueOf(sexe_f.getValue());
         domicile = validString(domicile_f.getText(), "Domicile");
         validDate(date_f.getValue());
         lieu = validString(lieu_f.getText(), "Lieu de naissance");

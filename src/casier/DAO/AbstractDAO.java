@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -67,11 +68,17 @@ public abstract class AbstractDAO<T, ID extends Serializable> implements Generic
 
     @Override
     public T findById(ID id) {
-        T entity;
-        String query = "from Personne where id = "+id;
+        T entity = null;
+        String query = "from "+getEntityClass().getName()+" where id = '"+id+"'";
         start();
-        Query q = getSession().createQuery(query);
+        try {
+            Query q = getSession().createQuery(query);
         entity = (T)q.uniqueResult();
+        } catch (HibernateException e) {
+            System.out.println("Erreur");
+            entity = null;
+        }
+        
         end();
         return entity;
     }

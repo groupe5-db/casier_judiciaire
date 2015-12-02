@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -31,7 +32,7 @@ public class LoginController implements Initializable {
     private TextField matricule;
 
     @FXML // fx:id="password"
-    private TextField password; // Value injected by FXMLLoader
+    private PasswordField password; // Value injected by FXMLLoader
 
     @FXML
     private Button cancelBtn;
@@ -57,8 +58,8 @@ public class LoginController implements Initializable {
 
     @FXML
     void onLogin(ActionEvent event) {
-        String matricule = this.matricule.getText().toString();
-        String password = this.password.getText().toString();
+        String matricule = this.matricule.getText();
+        String password = this.password.getText();
 
         if(StringsUtils.checkValidString(matricule) && StringsUtils.checkValidString(password)){
             String messageResponse = loginService.login(matricule, password);

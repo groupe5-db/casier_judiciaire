@@ -8,7 +8,20 @@ package casier.pdf;
 
 import casier.entities.Peine;
 import casier.entities.Personne;
-
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.Image;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.ColumnText;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -135,7 +148,7 @@ public class PdfTemplate {
     private static List<Peine> peines;
     private static final DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     
-    public static File getCasierLikePdf(Personne personne, List<Peine> peines){
+    public static File getCasierLikePdf(Personne personne, List<Peine> peines) {
         
         PdfTemplate.personne = personne;
         PdfTemplate.peines = peines;
@@ -146,7 +159,7 @@ public class PdfTemplate {
         
         try {
             writer = PdfWriter.getInstance(casier, new FileOutputStream(filename));
-        } catch (FileNotFoundException | DocumentException e) {
+        } catch (DocumentException | FileNotFoundException ex) {
             System.out.println("Erreur lors de la création du casier!");
             return null;
             
@@ -176,7 +189,7 @@ public class PdfTemplate {
         
         try {
             writer = PdfWriter.getInstance(casier, new FileOutputStream(filename));
-        } catch (FileNotFoundException | DocumentException e) {
+        } catch (DocumentException | FileNotFoundException e) {
             System.out.println("Erreur lors de la création du casier!");
             return null;
             
